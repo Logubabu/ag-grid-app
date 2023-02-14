@@ -35,12 +35,10 @@ const HomePage = () => {
     checkboxData.forEach((k: any) => {
       Object.keys(rowConfig).forEach((key: any) => {
         if (key === k["field"]) {
-          // @ts-ignore
           rowFields.push({ [key]: rowConfig[key] });
         }
       });
     });
-    console.log(rowFields);
     setTable(<Table columnData={checkboxData} rowData={rowConfig} />);
   };
 

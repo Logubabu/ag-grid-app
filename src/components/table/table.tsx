@@ -10,17 +10,12 @@ ModuleRegistry.registerModules([ClientSideRowModelModule, RichSelectModule]);
 const Table = (data: any) => {
   const columnsConfig = data.columnData;
   const rowConfig = data.rowData;
-
-  console.log("column Data", columnsConfig);
-  console.log("row Data", rowConfig);
-
   const gridApi = useRef<AgGridReact>(null);
 
   // value setter function
   function numberValueSetter(params: ValueSetterParams) {
     let selectedRow = params.colDef.field;
     Object.keys(rowConfig).forEach((k: any) => {
-      // @ts-ignore
       rowConfig[k].forEach((obj: any) => {
         // if (selectedField === undefined) {
         //   return true;
@@ -39,9 +34,7 @@ const Table = (data: any) => {
   // Row Value mapping
   function rowValue(columnName: any, fields: any) {
     let listValues: any = [];
-    // @ts-ignore
-    rowConfig[fields].forEach((data) => {
-      // @ts-ignore
+    rowConfig[fields].forEach((data: any) => {
       listValues.push(data[columnName]);
     });
     return listValues;
