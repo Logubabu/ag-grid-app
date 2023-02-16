@@ -1,27 +1,27 @@
 {
-    "rowConfig" : {
-        "AC": [
-          { "name_en": "Chennai", "name_ta": "Chennai Tamil", "number": "1"},
-          { "name_en": "Mylapore", "name_ta": "Mylapore Tamil", "number": "3" },
-          { "name_en": "Trichy", "name_ta": "Trichy Tamil", "number": "4"},
-          { "name_en": "Madurai", "name_ta": "Madurai Tamil", "number": "2" }
-        ],
-        "PC": [
-          { "name_en": "Dindigul", "name_ta": "Dindigul Tamil", "number": "57" },
-          { "name_en": "Theni", "name_ta": "Theni Tamil", "number": "60" },
-          { "name_en": "Coimbatore", "name_ta": "Coimbatore Tamil", "number": "37" },
-          { "name_en": "VadaMadurai", "name_ta": "VadaMadurai Tamil", "number": "66" }
-        ],
-        "District": [
-          { "name_en": "Erode", "name_ta": "Erode Tamil", "number": "55" },
-          { "name_en": "Selem", "name_ta": "Selem Tamil", "number": "59" },
-          { "name_en": "Vellore", "name_ta": "Vellore Tamil", "number": "37" },
-          { "name_en": "Pudukkottai", "name_ta": "Pudukkottai Tamil", "number": "54" }
-        ]
-      },
-      "columnsConfig" : [
-        { "field": "AC", "sub_fields": ["name_en", "name_ta", "number"] },
-        { "field": "PC", "sub_fields": ["name_en", "name_ta", "number"] },
-        { "field": "District", "sub_fields": ["name_en", "name_ta", "number"] }
+  "rowConfig" : {
+      "District": [
+        { "name_en": "Erode", "name_ta": "Erode Tamil", "number": "55" },
+        { "name_en": "Selem", "name_ta": "Selem Tamil", "number": "59" },
+        { "name_en": "Vellore", "name_ta": "Vellore Tamil", "number": "37" },
+        { "name_en": "Pudukkottai", "name_ta": "Pudukkottai Tamil", "number": "54" }
+      ],
+      "AC": [
+        { "name_en": "Chennai", "name_ta": "Chennai Tamil", "number": "1", "mapping":{"District":"Erode"} },
+        { "name_en": "Mylapore", "name_ta": "Mylapore Tamil", "number": "3", "mapping":{"District":"Selem"}  },
+        { "name_en": "Trichy", "name_ta": "Trichy Tamil", "number": "4", "mapping":{"District":"Selem"}  },
+        { "name_en": "Madurai", "name_ta": "Madurai Tamil", "number": "2", "mapping":{"District":"Pudukkottai"}  }
+      ],
+      "PC": [
+        { "name_en": "Dindigul", "name_ta": "Dindigul Tamil", "number": "57" },
+        { "name_en": "Theni", "name_ta": "Theni Tamil", "number": "60" },
+        { "name_en": "Coimbatore", "name_ta": "Coimbatore Tamil", "number": "37" },
+        { "name_en": "VadaMadurai", "name_ta": "VadaMadurai Tamil", "number": "66" }
       ]
+    },
+    "columnsConfig" : [
+      { "field": "District", "sub_fields": ["name_en", "name_ta", "number"] },
+      { "field": "AC", "sub_fields": ["name_en", "name_ta", "number"] },
+      { "field": "PC", "sub_fields": ["name_en", "name_ta", "number"] }
+    ]
 }

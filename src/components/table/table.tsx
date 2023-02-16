@@ -14,12 +14,9 @@ const Table = (data: any) => {
 
   // value setter function
   function numberValueSetter(params: ValueSetterParams) {
-    let selectedRow = params.colDef.field;
     Object.keys(rowConfig).forEach((k: any) => {
+      let selectedRow = params.colDef.field;
       rowConfig[k].forEach((obj: any) => {
-        // if (selectedField === undefined) {
-        //   return true;
-        // }
         //@ts-ignore
         if (obj[selectedRow] === params.newValue) {
           for (let d in obj) {
@@ -32,12 +29,20 @@ const Table = (data: any) => {
   }
 
   // Row Value mapping
-  function rowValue(columnName: any, fields: any) {
+  function getDropdownOptions(params: any, columnName: any, fields: any) {
     let listValues: any = [];
     rowConfig[fields].forEach((data: any) => {
-      listValues.push(data[columnName]);
+      if (data.mapping !== undefined) {
+        Object.keys(data.mapping).forEach((e: any) => {
+          if (params.data[e][columnName] === data.mapping[e]) {
+            listValues.push(data[columnName]);
+          }
+        });
+      } else {
+        listValues.push(data[columnName]);
+      }
     });
-    return listValues;
+    return { values: listValues };
   }
 
   // column field convertions
@@ -48,11 +53,8 @@ const Table = (data: any) => {
     sub_fields[data["field"]].forEach((items: any) => {
       children.push({
         field: items,
-
         cellEditor: "agSelectCellEditor",
-        cellEditorParams: {
-          values: rowValue(items, data["field"]),
-        } as ISelectCellEditorParams,
+        cellEditorParams: (params: any) => getDropdownOptions(params, items, data["field"]),
         valueSetter: numberValueSetter,
         valueGetter: (params: any) => {
           return params.data[data["field"]][items];
